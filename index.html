@@ -17,7 +17,8 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 var force = d3.layout.force()
-    .charge(0)
+.charge(-10)
+    .gravity(0)
     .size([width, height]);
 
   force
