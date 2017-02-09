@@ -1,0 +1,14 @@
+
+body {
+ background-color: #000;
+}
+
+.limb {
+  stroke: #999;
+}
+
+.joint {
+  stroke: #fff;
+  fill: #999;
+}
+
