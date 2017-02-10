@@ -30,23 +30,23 @@ pedestrian = { "nodes": [
         { "source": 2, "target": 1, "length": 30 },
         { "source": 3, "target": 1, "length": 30 },
 
-        { "source": 4, "target": 2, "length": 30 },
-        { "source": 5, "target": 4, "length": 30 },
+        { "source": 4, "target": 2, "length": 50 },
+        { "source": 5, "target": 4, "length": 50 },
 
-        { "source": 3, "target": 6, "length": 30 },
-        { "source": 6, "target": 7, "length": 30 },
+        { "source": 3, "target": 6, "length": 50 },
+        { "source": 6, "target": 7, "length": 50 },
 
-        { "source": 1, "target": 8, "length": 20 },
-        { "source": 8, "target": 10, "length": 60 },
-        { "source": 8, "target": 11, "length": 60 },
+        { "source": 1, "target": 8, "length": 30 },
+        { "source": 8, "target": 10, "length": 50 },
+        { "source": 8, "target": 11, "length": 50 },
 
         { "source": 2, "target": 9, "length": 60 },
         { "source": 3, "target": 9, "length": 60 },
         { "source": 9, "target": 10, "length": 30 },
         { "source": 9, "target": 11, "length": 30 },
-        { "source": 11, "target": 13, "length": 60 },
-        { "source": 13, "target": 15, "length": 60 },
-        { "source": 10, "target": 12, "length": 60 },
-        { "source": 12, "target": 14, "length": 60 }
+        { "source": 11, "target": 13, "length": 50 },
+        { "source": 13, "target": 15, "length": 50 },
+        { "source": 10, "target": 12, "length": 50 },
+        { "source": 12, "target": 14, "length": 50 }
     ]
              };
