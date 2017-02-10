@@ -12,3 +12,19 @@ body {
   fill: #999;
 }
 
+#header {
+    font-size: 10pt;
+    font-family: Helvetica, sans;
+    color: #999;
+    
+}
+
+a:hover, a:focus, a {
+    color: #99ff99;
+}
+
+a:active {
+    color: #22ff22;
+}
+
+                  
