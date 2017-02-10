@@ -7,6 +7,8 @@
 </head>
 
 <body>
+
+<!-- change to see if pushing makes it show up on github.io -->
 <script>
 
 var width = 960,
@@ -17,8 +19,8 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 var force = d3.layout.force()
-.charge(-10)
-    .gravity(0)
+.charge(-120)
+    .gravity(0.1)
     .size([width, height]);
 
   force
