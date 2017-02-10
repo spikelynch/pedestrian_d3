@@ -10,6 +10,8 @@
 <div id="header">The Pedestrian in <a href="https://d3js.org">d3</a> /
   design: Lisa Roberts / <a href="https://github.com/spikelynch/pedestrian_d3">code:</a> Mike Lynch</div>
 
+<!-- Note: add invisible struts to the model to provide stiffness -->
+  
 <!-- change to see if pushing makes it show up on github.io -->
 <script>
 
@@ -22,8 +24,8 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 var force = d3.layout.force()
-.charge(-220)
-    .gravity(0.1)
+.charge(-10)
+    .gravity(0)
     .size([width, height]);
 
   force
