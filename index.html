@@ -33,7 +33,7 @@ var force = d3.layout.force()
       .nodes(pedestrian.nodes)
       .links(pedestrian.links)
       .linkDistance(function(l) { return l.length })
-      .linkStrength(function(l) { return 35 / l.length })
+      .linkStrength(function(l) { return 50 / l.length })
       .start();
 
   var link = svg.selectAll(".link")
