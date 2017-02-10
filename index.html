@@ -31,8 +31,11 @@ var simulation = d3.forceSimulation()
 
   simulation.nodes(pedestrian.nodes);
 
+  simulation.force("links")
+  .links(pedestrian.links);
 
-  simulation.force("links").links(pedestrian.links);
+  simulation.force("links").distance(function(d) { return d.length });
+  simulation.force("charge").strength(-200);
 
   var link = svg.selectAll(".link")
       .data(pedestrian.links)
