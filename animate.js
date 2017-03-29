@@ -1,9 +1,9 @@
 
 var SOUNDFILES = {
-    "head": "2017-02-23-01birds.mp3",     
-    "rear": "2017-02-23-02birds.mp3",     
-    "lear": "2017-02-23-03FrogPlane-Birds.mp3",
-    "neck": "2017-02-23-04FrogPlane-Birds-Long.mp3",
+    "head": "2015-08-14-AndrewDavidson-01.mp3",     
+    "rear": "2015-08-14-AndrewDavidson-02.mp3",     
+    "lear": "2015-08-14-AndrewDavidson-03.mp3",
+    "neck": "2015-08-14-AndrewDavidson-04.mp3",
     "rshoulder": "2017-02-23-05FrogPlane-Birds.mp3",
     "lshoulder": "2017-02-23-06Frog-Birds.mp3",
     "heart": "2017-02-23-07FrogPlane-Birds.mp3",
@@ -20,12 +20,28 @@ var SOUNDFILES = {
     "lfoot": "2017-02-23-18Frog-Birds.mp3"
 };
 
+
+var VIDEOS = {
+    "head": {
+        "file": "head/AndrewDavidson-Connectivity-voice.mp4",
+        "x": 100,
+        "y": 100,
+        "w": 64,
+        "h": 48
+    },
+};
+
+
 var sounds = {};
 
 for( var i in SOUNDFILES ) {
-    sounds[i] = new Audio("Sounds/" + SOUNDFILES[i]);
-    console.log("Loaded " + SOUNDFILES[i]);
+    sounds[i] = new Audio("media/sounds/" + SOUNDFILES[i]);
 }
+
+// this dict is used to keep track of which windows have been opened
+// if a video is open, don't open it again
+
+var video_playing = {};
 
 
 
@@ -66,6 +82,7 @@ var node = svg.selectAll(".node")
     .attr("r", radius)
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut)
+    .on("mouseup", handleMouseUp)
     .call(d3.drag()
           .on("start", dragstarted)
           .on("drag", dragged)
@@ -104,10 +121,32 @@ function dragended(d) {
 
 function handleMouseOver(d) {
     var s = sounds[d.id];
-    console.log("Got sound " + s);
     s.play();
 }
 
 function handleMouseOut(d) {
-    console.log("mouseout");
+    console.log("mouseout " + d);
+    showVideo(d.id)
+}
+
+
+function handleMouseUp(d) {
+}
+
+
+// see http://stackoverflow.com/questions/2741493/detect-when-an-html5-video-finishes for triggering an action when a video stops playing
+
+function showVideo(id) {
+    if( id in VIDEOS ) {
+        if( ! ( id in video_playing ) ) {
+            console.log("Video: " + VIDEOS[id]);
+            var url = 'media/videos/' + VIDEOS[id].file;
+            var features = windowLoc(VIDEOS[id]);
+            video_playing[id] = window.open(url, "_blank", features);
+        }
+    }
+}
+
+function windowLoc(vid) {
+    return "location=yes,x=" + vid.x + ",y=" + vid.y + ",width=" + vid.w + ",height=" + vid.h;
 }
