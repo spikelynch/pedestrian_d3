@@ -26,8 +26,8 @@ var VIDEOS = {
         "file": "head/AndrewDavidson-Connectivity-voice.mp4",
         "x": 100,
         "y": 100,
-        "w": 64,
-        "h": 48
+        "w": 320,
+        "h": 240
     },
 };
 
@@ -81,8 +81,6 @@ var node = svg.selectAll(".node")
     .attr("class", "joint")
     .attr("r", radius)
     .on("mouseover", handleMouseOver)
-    .on("mouseout", handleMouseOut)
-    .on("mouseup", handleMouseUp)
     .call(d3.drag()
           .on("start", dragstarted)
           .on("drag", dragged)
@@ -117,6 +115,9 @@ function dragended(d) {
     if (!d3.event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
+    if( d.id in VIDEOS ) {
+        showVideo(d.id);
+    }   
 }
 
 function handleMouseOver(d) {
@@ -124,14 +125,6 @@ function handleMouseOver(d) {
     s.play();
 }
 
-function handleMouseOut(d) {
-    console.log("mouseout " + d);
-    showVideo(d.id)
-}
-
-
-function handleMouseUp(d) {
-}
 
 
 // see http://stackoverflow.com/questions/2741493/detect-when-an-html5-video-finishes for triggering an action when a video stops playing
