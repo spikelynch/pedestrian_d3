@@ -19,6 +19,14 @@ body {
     
 }
 
+#videoframe {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 320px;
+    height: 240px;
+}
+
 a:hover, a:focus, a {
     color: #99ff99;
 }

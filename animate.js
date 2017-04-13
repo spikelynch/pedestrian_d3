@@ -1,35 +1,4 @@
 
-var SOUNDFILES = {
-    "head": "2015-08-14-AndrewDavidson-01.mp3",     
-    "rear": "2015-08-14-AndrewDavidson-02.mp3",     
-    "lear": "2015-08-14-AndrewDavidson-03.mp3",
-    "neck": "2015-08-14-AndrewDavidson-04.mp3",
-    "rshoulder": "2017-02-23-05FrogPlane-Birds.mp3",
-    "lshoulder": "2017-02-23-06Frog-Birds.mp3",
-    "heart": "2017-02-23-07FrogPlane-Birds.mp3",
-    "rhip": "2017-02-23-08Frog-Birds.mp3",
-    "lhip": "2017-02-23-09Frog-Birds.mp3",
-    "groin": "2017-02-23-10Frog-Birds.mp3",
-    "relbow": "2017-02-23-11Frog-Birds.mp3",
-    "rhand": "2017-02-23-12Frog-Birds.mp3",
-    "lelbow": "2017-02-23-13Frog-Birds.mp3",
-    "lhand": "2017-02-23-14Frog-Birds.mp3",
-    "rknee": "2017-02-23-15Frog-Birds.mp3",
-    "rfoot": "2017-02-23-16Frog-Birds.mp3",
-    "lknee": "2017-02-23-17Frog-Birds.mp3",
-    "lfoot": "2017-02-23-18Frog-Birds.mp3"
-};
-
-
-var VIDEOS = {
-    "head": {
-        "file": "head/AndrewDavidson-Connectivity-voice.mp4",
-        "x": 100,
-        "y": 100,
-        "w": 320,
-        "h": 240
-    },
-};
 
 
 var sounds = {};
@@ -60,10 +29,10 @@ var simulation = d3.forceSimulation()
 //    .force("gravity", d3.forceY(height));
 
 simulation.velocityDecay(0.1);
-simulation.nodes(pedestrian.nodes);
+simulation.nodes(PEDESTRIAN.nodes);
 
 simulation.force("links")
-    .links(pedestrian.links);
+    .links(PEDESTRIAN.links);
 
 simulation.force("links").distance(function(d) { return d.length });
 simulation.force("charge").strength(-100);
@@ -71,12 +40,12 @@ simulation.force("charge").strength(-100);
 //simulation.force("gravity").strength(0.015);
 
 var link = svg.selectAll(".link")
-    .data(pedestrian.links)
+    .data(PEDESTRIAN.links)
     .enter().append("line")
     .attr("class", "limb");
 
 var node = svg.selectAll(".node")
-    .data(pedestrian.nodes)
+    .data(PEDESTRIAN.nodes)
     .enter().append("circle")
     .attr("class", "joint")
     .attr("r", radius)
@@ -130,12 +99,24 @@ function handleMouseOver(d) {
 // see http://stackoverflow.com/questions/2741493/detect-when-an-html5-video-finishes for triggering an action when a video stops playing
 
 function showVideo(id) {
+    for (var sid in sounds) {
+        console.log(sounds[sid]);
+        sounds[sid].pause();
+    }
     if( id in VIDEOS ) {
         if( ! ( id in video_playing ) ) {
-            console.log("Video: " + VIDEOS[id]);
-            var url = 'media/videos/' + VIDEOS[id].file;
-            var features = windowLoc(VIDEOS[id]);
-            video_playing[id] = window.open(url, "_blank", features);
+            var v = VIDEOS[id];
+            var url = 'media/videos/' + v.file;
+            console.log("Adding video element at " + v.x + ", " + v.y);
+            var g = d3.select("body").append("div")
+                .attr("id", "videoframe")
+                .append("video")
+                .attr("width", v.w)
+                .attr("height", v.h)
+                .attr("style", "opacity:0.7")
+                .attr("autoplay", "true")
+                .append("source")
+                .attr("src", url);
         }
     }
 }
