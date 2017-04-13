@@ -29,10 +29,10 @@ var simulation = d3.forceSimulation()
 //    .force("gravity", d3.forceY(height));
 
 simulation.velocityDecay(0.1);
-simulation.nodes(PEDESTRIAN.nodes);
+simulation.nodes(MODEL.nodes);
 
 simulation.force("links")
-    .links(PEDESTRIAN.links);
+    .links(MODEL.links);
 
 simulation.force("links").distance(function(d) { return d.length });
 simulation.force("charge").strength(-100);
@@ -40,12 +40,12 @@ simulation.force("charge").strength(-100);
 //simulation.force("gravity").strength(0.015);
 
 var link = svg.selectAll(".link")
-    .data(PEDESTRIAN.links)
+    .data(MODEL.links)
     .enter().append("line")
     .attr("class", "limb");
 
 var node = svg.selectAll(".node")
-    .data(PEDESTRIAN.nodes)
+    .data(MODEL.nodes)
     .enter().append("circle")
     .attr("class", "joint")
     .attr("r", radius)
