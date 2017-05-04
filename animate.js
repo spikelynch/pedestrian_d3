@@ -1,4 +1,8 @@
 
+var width = 1920,
+    height = 1000,
+    radius = 5,
+    downg = 1;
 
 
 var sounds = {};
@@ -14,14 +18,15 @@ var video_playing = {};
 
 
 
-var width = 960,
-    height = 500,
-    radius = 5,
-    downg = 1;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var cont = d3.select("div#main")
+    .append("div")
+    .classed("svg-container", true);
+
+var svg = cont.append("svg")
+   .attr("preserveAspectRatio", "xMinYMin meet")
+   .attr("viewBox", `0 0 ${width} ${height}`)
+   .classed("svg-content-responsive", true);
 
 var simulation = d3.forceSimulation()
     .force("links", d3.forceLink().id(function(d) { return d.id }))
