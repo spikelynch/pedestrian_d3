@@ -131,6 +131,7 @@ function showVideo(id, coords) {
                 .on("ended", function (e) { hideVideo(id) })
                 .append("source")
                 .attr("src", url);
+            video_playing[id] = true;
         }
     }
 }
@@ -139,6 +140,7 @@ function showVideo(id, coords) {
 
 function hideVideo(id) {
     d3.select("#video" + id).remove();
+    delete video_playing[id];
 }
     
 
