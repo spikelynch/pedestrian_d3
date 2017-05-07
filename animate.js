@@ -1,6 +1,6 @@
 
-var width = 1920,
-    height = 1000,
+var width = 960,
+    height = 500,
     radius = 5,
     downg = 1;
 
@@ -8,7 +8,7 @@ var width = 1920,
 var sounds = {};
 
 for( var i in SOUNDFILES ) {
-    sounds[i] = new Audio("media/sounds/" + SOUNDFILES[i]);
+    sounds[i] = new Audio("media/" + SOUNDFILES[i]);
 }
 
 // this dict is used to keep track of which windows have been opened
@@ -90,20 +90,23 @@ function dragended(d) {
     d.fx = null;
     d.fy = null;
     if( d.id in VIDEOS ) {
-        showVideo(d.id);
+        var coords = d3.mouse(this);
+        showVideo(d.id, coords);
     }   
 }
 
 function handleMouseOver(d) {
-    var s = sounds[d.id];
-    s.play();
+    if( d.id in sounds ) {
+        var s = sounds[d.id];
+        s.play();
+    }
 }
 
 
 
 // see http://stackoverflow.com/questions/2741493/detect-when-an-html5-video-finishes for triggering an action when a video stops playing
 
-function showVideo(id) {
+function showVideo(id, coords) {
     for (var sid in sounds) {
         console.log(sounds[sid]);
         sounds[sid].pause();
@@ -111,21 +114,30 @@ function showVideo(id) {
     if( id in VIDEOS ) {
         if( ! ( id in video_playing ) ) {
             var v = VIDEOS[id];
-            var url = 'media/videos/' + v.file;
-            console.log("Adding video element at " + v.x + ", " + v.y);
-            var g = d3.select("body").append("div")
-                .attr("id", "videoframe")
-                .append("video")
-                .attr("width", v.w)
-                .attr("height", v.h)
-                .attr("style", "opacity:0.7")
-                .attr("autoplay", "true")
-                .append("source")
-                .attr("src", url);
+            var url = 'media/' + v;
+            console.log("Adding video element at " + coords);
+            var g = cont.append("div")
+                .attr("class", "videoframe")
+                .attr("id", "video" + id)
+                .attr("style", video_style(coords[0], coords[1]));
+                // .append("video")
+                // .attr("width", VWIDTH)
+                // .attr("height", VHEIGHT)
+                // .attr("style", `opacity:${VOPACITY}`)
+                // .attr("autoplay", "true")
+                // .append("source")
+                // .attr("src", url);
         }
     }
 }
 
-function windowLoc(vid) {
-    return "location=yes,x=" + vid.x + ",y=" + vid.y + ",width=" + vid.w + ",height=" + vid.h;
+//               .attr("style", video_style(coords[0], coords[1]))
+ 
+
+function video_style(ex, ey) {
+    // var x = Math.floor(ex - VWIDTH / 2);
+    // var y = Math.floor(ey - VHEIGHT / 2);
+    var x = Math.floor(ex);
+    var y = Math.floor(ey);
+    return `left:${x}px;top:${y}px;width:${VWIDTH + 2}px;height:${VHEIGHT + 2}px`;
 }
