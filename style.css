@@ -46,6 +46,15 @@ rect.placeholder {
     pointer-events: none;
 }
 
+xhtml:video {
+    pointer-events: none;
+    border: 1px white sold;
+}
+
+foreignObject {
+    pointer-events: none;
+}
+
 /* .videoframe { */
 /*     position: absolute; */
 /*     width: 650px; */
