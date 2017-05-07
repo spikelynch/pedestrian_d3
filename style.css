@@ -20,14 +20,6 @@ body {
     left: 0;
 }
 
-
-
-
-
-
-
-
-
 .limb {
   stroke: #666;
 }
@@ -35,6 +27,7 @@ body {
 .joint {
   stroke: #fff;
   fill: #999;
+
 }
 
 #header {
@@ -44,15 +37,24 @@ body {
     
 }
 
-.videoframe {
-    position: absolute;
+rect.placeholder {
     width: 650px;
     height: 490px;
-    background-color: red;
+    fill: blue;
     opacity: 0.2;
-    border: solid 1px white;
+    stroke: white;
     pointer-events: none;
 }
+
+/* .videoframe { */
+/*     position: absolute; */
+/*     width: 650px; */
+/*     height: 490px; */
+/*     background-color: red; */
+/*     opacity: 0.2; */
+/*     border: solid 1px white; */
+/*     pointer-events: none; */
+/* } */
 
 /* #videohead { */
 /*     top: 10px; */

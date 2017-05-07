@@ -1,6 +1,6 @@
 
-var width = 960,
-    height = 500,
+var width = 1920,
+    height = 1000,
     radius = 5,
     downg = 1;
 
@@ -116,17 +116,25 @@ function showVideo(id, coords) {
             var v = VIDEOS[id];
             var url = 'media/' + v;
             console.log("Adding video element at " + coords);
-            var g = cont.append("div")
+            var g = svg.append("g")
                 .attr("class", "videoframe")
                 .attr("id", "video" + id)
-                .attr("style", video_style(coords[0], coords[1]));
-                // .append("video")
-                // .attr("width", VWIDTH)
+                .attr("transform", video_transform(coords[0], coords[1]))
+                .append("foreignObject")
+                .attr("width", VWIDTH + 4)
+                .attr("height", VHEIGHT + 4)
+                .append("xhtml:video")
+                .attr("width", VWIDTH)
+                .attr("height", VHEIGHT)
+                .attr("style", `opacity:${VOPACITY}`)
+                .attr("autoplay", "true")
+                .append("source")
+                .attr("src", url);
+                // .append("rect")
+                // .attr("class", "placeholder")
                 // .attr("height", VHEIGHT)
-                // .attr("style", `opacity:${VOPACITY}`)
-                // .attr("autoplay", "true")
-                // .append("source")
-                // .attr("src", url);
+                // .attr("width", VWIDTH);
+//                .attr("style", video_style(coords[0], coords[1]));
         }
     }
 }
@@ -140,4 +148,11 @@ function video_style(ex, ey) {
     var x = Math.floor(ex);
     var y = Math.floor(ey);
     return `left:${x}px;top:${y}px;width:${VWIDTH + 2}px;height:${VHEIGHT + 2}px`;
+}
+
+function video_transform(ex, ey) {
+    var x = Math.floor(ex - VWIDTH / 2);
+    var y = Math.floor(ey - VHEIGHT / 2);
+
+    return `translate(${x},${y})`;
 }
