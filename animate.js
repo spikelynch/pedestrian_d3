@@ -128,19 +128,20 @@ function showVideo(id, coords) {
                 .attr("height", VHEIGHT)
                 .attr("style", `opacity:${VOPACITY}`)
                 .attr("autoplay", "true")
+                .on("ended", function (e) { hideVideo(id) })
                 .append("source")
                 .attr("src", url);
-                // .append("rect")
-                // .attr("class", "placeholder")
-                // .attr("height", VHEIGHT)
-                // .attr("width", VWIDTH);
-//                .attr("style", video_style(coords[0], coords[1]));
         }
     }
 }
 
 //               .attr("style", video_style(coords[0], coords[1]))
- 
+
+function hideVideo(id) {
+    d3.select("#video" + id).remove();
+}
+    
+
 
 function video_style(ex, ey) {
     // var x = Math.floor(ex - VWIDTH / 2);
