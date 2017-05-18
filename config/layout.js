@@ -27,10 +27,17 @@ var FORCES = {
 
     "iterations": 5,
 
-    // scale: multiplier for all of the lengths between nodes
+    // scale: all of the link distances are multiplied by this
     
-    "scale": 2,
+    "scale": 1,
+    
+    // link: how strongly links attract one another - set this to 'false' for
+    // 'puppet classic'
 
+    "link": false,
+
+
+    
 };
 
 

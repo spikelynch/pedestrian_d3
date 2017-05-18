@@ -42,7 +42,14 @@ simulation.nodes(MODEL.nodes);
 simulation.force("links")
     .links(MODEL.links);
 
-simulation.force("links").distance(function(d) { return d.length * FORCES.scale }).iterations(FORCES.iterations);
+simulation.force("links")
+    .distance(function(d) { return d.length * FORCES.scale })
+    .iterations(FORCES.iterations);
+
+if( FORCES.link ) {
+    simulation.force("links").strength(FORCES.link);
+}
+
 simulation.force("charge").strength(-FORCES.charge);
 
 if( FORCES.gravity_on ) {
