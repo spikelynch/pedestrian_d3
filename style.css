@@ -1,7 +1,33 @@
 
+
 body {
- background-color: #000;
+ background-color: black;
 }
+
+.limb {
+    stroke: #666;
+    stroke-width: 3px;
+}
+
+.joint {
+    stroke: white;
+    fill: #999;
+
+}
+
+
+#header {
+    font-size: 10pt;
+    font-family: Helvetica, sans;
+    color: #999;
+    
+}
+
+
+
+
+
+
 
 
 .svg-container {
@@ -20,22 +46,6 @@ body {
     left: 0;
 }
 
-.limb {
-  stroke: #666;
-}
-
-.joint {
-  stroke: #fff;
-  fill: #999;
-
-}
-
-#header {
-    font-size: 10pt;
-    font-family: Helvetica, sans;
-    color: #999;
-    
-}
 
 rect.placeholder {
     width: 650px;

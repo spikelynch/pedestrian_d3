@@ -1,8 +1,6 @@
 
 var width = 1920,
-    height = 1000,
-    radius = 5,
-    downg = 1;
+    height = 1000;
 
 var GRAVITY_K = 0.01;
 
@@ -44,7 +42,7 @@ simulation.nodes(MODEL.nodes);
 simulation.force("links")
     .links(MODEL.links);
 
-simulation.force("links").distance(function(d) { return d.length });
+simulation.force("links").distance(function(d) { return d.length * FORCES.scale }).iterations(FORCES.iterations);
 simulation.force("charge").strength(-FORCES.charge);
 
 if( FORCES.gravity_on ) {
@@ -60,7 +58,7 @@ var node = svg.selectAll(".node")
     .data(MODEL.nodes)
     .enter().append("circle")
     .attr("class", "joint")
-    .attr("r", radius)
+    .attr("r", NODE_R)
     .on("mouseover", handleMouseOver)
     .call(d3.drag()
           .on("start", dragstarted)
@@ -76,8 +74,8 @@ simulation.on("tick", function() {
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
     
-    node.attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)) })
-        .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)) });
+    node.attr("cx", function(d) { return d.x = Math.max(NODE_R, Math.min(width - NODE_R, d.x)) })
+        .attr("cy", function(d) { return d.y = Math.max(NODE_R, Math.min(height - NODE_R, d.y)) });
     
 });
 
