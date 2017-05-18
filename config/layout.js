@@ -1,8 +1,13 @@
 // Pedestrian_d3 configuration
 
-// Parameters for the force-spring layout
+// Parameters for the d3 simulation
+
+// NODE_R - radius of the circles showing the nodes, which has to be configured
+// here rather than the style.css file
 
 var NODE_R = 5;
+
+// FORCES - these are the parameters controlling how the pedestrian moves
 
 var FORCES = {
 
@@ -37,8 +42,8 @@ var FORCES = {
     "link": false,
 
 
-    
 };
+
 
 
 // MODEL defines the nodes and the links which connect them

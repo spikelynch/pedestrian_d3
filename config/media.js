@@ -1,7 +1,7 @@
-// Soundfiles to be triggered when the user moves the mouse pointer
-// over a node. Keys should be node IDs.
-// File paths are relative to /media/sounds/
+// Sound clips are played when the user moves the pointer over a node.
 
+// "head", "rfoot" etc are node ids from layout.js
+// the filenames are relative to /media/
 
 var SOUNDFILES = {
     "head": "01.mp3",     
@@ -10,14 +10,9 @@ var SOUNDFILES = {
 };
 
 // Video clips to be played when the user drags and releases a node.
-// Values are:
-// -  file - file path relative to /media/videos
-// -  x, y - position of the video window, relative to the top left corner
-// -  w, h - width and height of video in pixels
 
-var VWIDTH = 640;
-var VHEIGHT = 480;
-var VOPACITY = 0.5;
+// "head",  etc are node ids from layout.js
+// the filenames are relative to /media/
 
 var VIDEOS = {
     "head": "01.mp4",
@@ -31,3 +26,10 @@ var VIDEOS = {
     "lhip": "13.mp4",
 };
 
+// Configuration for video playback.
+// VWIDTH, VHEIGHT -- the geometry and size of the video window
+// VOPACITY        -- opacity of the video (from 0 to 1.0)
+
+var VWIDTH = 640;
+var VHEIGHT = 480;
+var VOPACITY = 0.5;
