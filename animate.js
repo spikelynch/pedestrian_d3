@@ -4,6 +4,8 @@ var width = 1920,
     radius = 5,
     downg = 1;
 
+var GRAVITY_K = 0.01;
+
 
 var sounds = {};
 
@@ -31,18 +33,23 @@ var svg = cont.append("svg")
 var simulation = d3.forceSimulation()
     .force("links", d3.forceLink().id(function(d) { return d.id }))
     .force("charge", d3.forceManyBody());
-//    .force("gravity", d3.forceY(height));
 
-simulation.velocityDecay(0.1);
+if( FORCES.gravity_on ) {
+    simulation.force("gravity", d3.forceY(height));
+}
+
+simulation.velocityDecay(FORCES.vdecay);
 simulation.nodes(MODEL.nodes);
 
 simulation.force("links")
     .links(MODEL.links);
 
 simulation.force("links").distance(function(d) { return d.length });
-simulation.force("charge").strength(-100);
+simulation.force("charge").strength(-FORCES.charge);
 
-//simulation.force("gravity").strength(0.015);
+if( FORCES.gravity_on ) {
+    simulation.force("gravity").strength(FORCES.gravity * GRAVITY_K);
+}
 
 var link = svg.selectAll(".link")
     .data(MODEL.links)

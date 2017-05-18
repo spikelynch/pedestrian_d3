@@ -1,5 +1,19 @@
 // Pedestrian_d3 configuration
 
+// Parameters for the force-spring layout
+
+var FORCES = {
+
+    "charge": 100,  
+
+    "gravity_on": true,
+
+    "gravity": 1,
+
+    "vdecay": 0.1
+
+};
+
 
 // MODEL defines the nodes and the links which connect them
 
