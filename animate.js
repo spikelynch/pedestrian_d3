@@ -7,9 +7,14 @@ var GRAVITY_K = 0.01;
 
 var sounds = {};
 
-for( var i in SOUNDFILES ) {
-    sounds[i] = new Audio("media/" + SOUNDFILES[i]);
+for( var id in SOUNDFILES ) {
+    sounds[id] = [];
+    for( var sf in SOUNDFILES[id] ) {
+        sounds[id].push(new Audio("media/" + SOUNDFILES[id][sf]));
+    }
 }
+
+console.log(sounds);
 
 // this dict is used to keep track of which windows have been opened
 // if a video is open, don't open it again
@@ -75,15 +80,15 @@ var node = svg.selectAll(".node")
 
 
 simulation.on("tick", function() {
-    
+
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
-    
+
     node.attr("cx", function(d) { return d.x = Math.max(NODE_R, Math.min(width - NODE_R, d.x)) })
         .attr("cy", function(d) { return d.y = Math.max(NODE_R, Math.min(height - NODE_R, d.y)) });
-    
+
 });
 
 function dragstarted(d) {
@@ -104,12 +109,12 @@ function dragended(d) {
     if( d.id in VIDEOS ) {
         var coords = d3.mouse(this);
         showVideo(d.id, coords);
-    }   
+    }
 }
 
 function handleMouseOver(d) {
     if( d.id in sounds ) {
-        var s = sounds[d.id];
+        var s = choose(sounds[d.id]);
         s.play();
     }
 }
@@ -120,12 +125,13 @@ function handleMouseOver(d) {
 
 function showVideo(id, coords) {
     for (var sid in sounds) {
-        console.log(sounds[sid]);
-        sounds[sid].pause();
+        for( var s in sounds[sid] ) {
+            sounds[sid][s].pause();
+        }
     }
     if( id in VIDEOS ) {
         if( ! ( id in video_playing ) ) {
-            var v = VIDEOS[id];
+            var v = choose(VIDEOS[id]);
             var url = 'media/' + v;
             console.log("Adding video element at " + coords);
             var g = svg.append("g")
@@ -154,7 +160,7 @@ function hideVideo(id) {
     d3.select("#video" + id).remove();
     delete video_playing[id];
 }
-    
+
 
 
 function video_style(ex, ey) {
@@ -170,4 +176,12 @@ function video_transform(ex, ey) {
     var y = Math.floor(ey - VHEIGHT / 2);
 
     return `translate(${x},${y})`;
+}
+
+function choose(arr) {
+    console.log("Choose from " + arr)
+    var i = Math.floor(Math.random() * arr.length);
+    console.log("i = " + i);
+    console.log("choice = " + arr[i]);
+    return arr[i];
 }
