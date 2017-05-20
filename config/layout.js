@@ -2,7 +2,7 @@
 
 // Parameters for the force-spring layout
 
-var NODE_R = 25;
+var NODE_R = 5;
 
 var FORCES = {
 

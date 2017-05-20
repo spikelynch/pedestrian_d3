@@ -10,7 +10,7 @@ var sounds = {};
 for( var id in SOUNDFILES ) {
     sounds[id] = [];
     for( var sf in SOUNDFILES[id] ) {
-        sounds[id].push(new Audio("media/" + sf));
+        sounds[id].push(new Audio("media/" + SOUNDFILES[id][sf]));
     }
 }
 
@@ -177,6 +177,9 @@ function video_transform(ex, ey) {
 }
 
 function choose(arr) {
+    console.log("Choose from " + arr)
     var i = Math.floor(Math.random() * arr.length);
+    console.log("i = " + i);
+    console.log("choice = " + arr[i]);
     return arr[i];
 }

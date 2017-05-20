@@ -13,8 +13,8 @@
 
 var SOUNDFILES = {
     "head": [ "01.mp3", "17.mp3" ],
-    "rfoot": [ "17.mp3"],
-    "lfoot": [ "18.mp3"]
+    "rfoot": [ "17.mp3", "18.mp3"],
+    "lfoot": [ "18.mp3", "01.mp3"]
 };
 
 // video config - VWIDTH and VHEIGHT are the size of the video
