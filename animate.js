@@ -14,14 +14,15 @@ for( var id in SOUNDFILES ) {
     }
 }
 
-console.log(sounds);
+// console.log(sounds);
 
 // this dict is used to keep track of which windows have been opened
 // if a video is open, don't open it again
 
 var video_playing = {};
 
-
+console.log("MODEL")
+console.log(MODEL);
 
 
 var cont = d3.select("div#main")
