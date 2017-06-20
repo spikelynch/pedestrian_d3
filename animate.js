@@ -21,97 +21,103 @@ for( var id in SOUNDFILES ) {
 
 var video_playing = {};
 
-console.log("MODEL")
-console.log(MODEL);
 
+function run_scene(model) {
 
-var cont = d3.select("div#main")
-    .append("div")
-    .classed("svg-container", true);
+    var cont = d3.select("div#main")
+        .append("div")
+        .classed("svg-container", true);
 
-var svg = cont.append("svg")
-   .attr("preserveAspectRatio", "xMinYMin meet")
-   .attr("viewBox", `0 0 ${width} ${height}`)
-   .classed("svg-content-responsive", true);
+    var svg = cont.append("svg")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .classed("svg-content-responsive", true);
 
-var simulation = d3.forceSimulation()
-    .force("links", d3.forceLink().id(function(d) { return d.id }))
-    .force("charge", d3.forceManyBody());
+    var simulation = d3.forceSimulation()
+        .force("links", d3.forceLink().id(function(d) { return d.id }))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(width * 0.5, height * 0.5))
+        .force("collision", d3.forceCollide(NODE_R));
 
-if( FORCES.gravity_on ) {
-    simulation.force("gravity", d3.forceY(height));
-}
-
-simulation.velocityDecay(FORCES.vdecay);
-simulation.nodes(MODEL.nodes);
-
-simulation.force("links")
-    .links(MODEL.links);
-
-simulation.force("links")
-    .distance(function(d) { return d.length * FORCES.scale })
-    .iterations(FORCES.iterations);
-
-if( FORCES.link ) {
-    simulation.force("links").strength(FORCES.link);
-}
-
-simulation.force("charge").strength(-FORCES.charge);
-
-if( FORCES.gravity_on ) {
-    simulation.force("gravity").strength(FORCES.gravity * GRAVITY_K);
-}
-
-var link = svg.selectAll(".link")
-    .data(MODEL.links)
-    .enter().append("line")
-    .attr("class", "limb");
-
-var node = svg.selectAll(".node")
-    .data(MODEL.nodes)
-    .enter().append("circle")
-    .attr("class", "joint")
-    .attr("r", NODE_R)
-    .on("mouseover", handleMouseOver)
-    .call(d3.drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended));
-
-
-
-simulation.on("tick", function() {
-
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
-    node.attr("cx", function(d) { return d.x = Math.max(NODE_R, Math.min(width - NODE_R, d.x)) })
-        .attr("cy", function(d) { return d.y = Math.max(NODE_R, Math.min(height - NODE_R, d.y)) });
-
-});
-
-function dragstarted(d) {
-    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-    d.fx  = d.x;
-    d.fy = d.y;
-}
-
-function dragged(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
-}
-
-function dragended(d) {
-    if (!d3.event.active) simulation.alphaTarget(0);
-    d.fx = null;
-    d.fy = null;
-    if( d.id in VIDEOS ) {
-        var coords = d3.mouse(this);
-        showVideo(d.id, coords);
+    if( FORCES.gravity_on ) {
+        simulation.force("gravity", d3.forceY(height));
     }
+
+    simulation.velocityDecay(FORCES.vdecay);
+    simulation.nodes(model.nodes);
+
+    simulation.force("links")
+        .links(model.links);
+
+    simulation.force("links")
+        .distance(function(d) { return d.length * FORCES.scale })
+        .iterations(FORCES.iterations);
+
+    if( FORCES.link ) {
+        simulation.force("links").strength(FORCES.link);
+    }
+    
+    simulation.force("charge").strength(-FORCES.charge);
+    
+    if( FORCES.gravity_on ) {
+        simulation.force("gravity").strength(FORCES.gravity * GRAVITY_K);
+    }
+    
+    var link = svg.selectAll(".link")
+        .data(model.links)
+        .enter().append("line")
+        .attr("class", "limb");
+    
+    var node = svg.selectAll(".node")
+        .data(model.nodes)
+        .enter().append("circle")
+        .attr("class", "joint")
+        .attr("r", NODE_R)
+        .on("mouseover", handleMouseOver)
+        .call(d3.drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended));
+    
+    
+    
+    simulation.on("tick", function() {
+        //    var t = d3.now();
+        //    FORCES.scale = Math.sin(t * 0.001) + 1.3;
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+        
+        node.attr("cx", function(d) { return d.x = Math.max(NODE_R, Math.min(width - NODE_R, d.x)) })
+            .attr("cy", function(d) { return d.y = Math.max(NODE_R, Math.min(height - NODE_R, d.y)) });
+        
+    });
+
+    function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx  = d.x;
+        d.fy = d.y;
+    }
+    
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+    
+    function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+        if( d.id in VIDEOS ) {
+            var coords = d3.mouse(this);
+            showVideo(d.id, coords);
+        }
+    }
+    
+
 }
+    
 
 function handleMouseOver(d) {
     if( d.id in sounds ) {

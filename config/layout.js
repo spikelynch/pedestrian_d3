@@ -8,7 +8,7 @@ var FORCES = {
 
     // charge: controls how strongly the nodes repel one another
 
-    "charge": 10,
+    "charge": .4,
 
     // gravity_on: set to true for gravity, false for no gravity
 
@@ -21,11 +21,11 @@ var FORCES = {
     // vdecay: higher values = more viscosity. too low = the simulation
     // goes a bit haywire
 
-    "vdecay": .4,
+    "vdecay": .01,
 
     // iterations: higher values make the puppet more rigid
 
-    "iterations": 5,
+    "iterations": 10,
 
     // scale: all of the link distances are multiplied by this
 
@@ -42,13 +42,3 @@ var FORCES = {
 
 
 
-// MODEL = make_layout([SHAPES['pedestrian'], SHAPES['wand']]);
-
-var shapes = [];
-
-for( i = 0; i < 100; i++ ) {
-    shapes.push(SHAPES['pedestrian']);
-//    shapes.push(SHAPES['wand']);
-}
-
-MODEL = make_layout(shapes);

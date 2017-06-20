@@ -7,6 +7,7 @@
 <script src="config/models/pedestrian.js"></script>
 <script src="config/layout.js"></script>
 <script src="config/media.js"></script>
+<script src="animate.js"></script>
 </head>
 
 <body>
@@ -15,9 +16,25 @@
 
 <div id="main">
 </div>
-  
-<script src="animate.js"> 
+
+<script>
+
+var shapes = [];
+var N = 3;
+
+for( i = 0; i < N; i++ ) {
+    shapes.push(SHAPES['pedestrian']);
+    shapes.push(SHAPES['wand']);
+}
+
+var scene = make_scene(shapes);
+
+run_scene(scene);
+
 </script>
+
+
+
 
 </body>
 </html>
