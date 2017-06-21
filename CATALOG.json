@@ -1,0 +1,266 @@
+{
+    "@context": {
+        "Dbp-owl": "http://dbpedia.org/ontology/",
+        "bibo": "http://purl.org/ontology/bibo/",
+        "cc": "http://creativecommons.org/ns#",
+        "dbp": "http://dbpedia.org/property/",
+        "dbr": "http://dbpedia.org/resource/",
+        "dc": "http://purl.org/dc/terms/",
+        "ex": "http://example.org/",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "pcdm": "http://pcdm.org/models#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfa": "http://www.w3.org/ns/rdfa#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org/",
+        "xhv": "http://www.w3.org/1999/xhtml/vocab#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@graph": [
+        {
+            "@id": "#5cee2ad3-6c8d-47a3-b495-f16e652c5ecc",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/04.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#nan",
+            "@type": "pcdm:Collection"
+        },
+        {
+            "@id": "#23a328ff-86df-4df4-9b75-3d075eba29da",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "././animate.js"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#03069535-3e84-4982-a26b-0a5bce362448",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/10.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#0ebec11f-9021-4ed7-9f72-2f2482a3bdc6",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/09.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#bb6fc509-d2de-464e-9bbb-e6e6c1ebd010",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/13.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#f9b48a6d-d701-415a-9480-aacd87444ace",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "././style.css"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#1087b84b-9e26-498e-9854-2e263149c2fb",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "././index.html"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#05de51fe-3db1-4ccc-bc62-43ba56c602ba",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "././README.md"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#a25d5fca-4a97-46d1-8831-b0fd08ad387c",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/17.mp3"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#741d1379-dd98-4b7d-a7b6-e72f8cb81820",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/18.mp3"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#3f4f0856-9358-4a29-bf34-4f3856152423",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/01.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#b5f8ad17-75d9-4407-a8b2-9067df09f4e0",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/03.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#92dbc658-a2ec-4da7-afc9-58e67f30165e",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./config/media.js"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#b7e8024e-51a1-44e2-8421-bbd7e2bc7185",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/02.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#f3a389bc-248b-468c-bdc9-f183f3d4bc65",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/12.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#4c09fc77-3bab-47ba-bc82-002139d57f1b",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/2017-KrillSex.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#cb430a3e-609a-4de8-9876-750ac70e9daf",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/11.mp4"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#9dac8bcc-74a6-4786-951c-d48eed019947",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./media/01.mp3"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#33d81747-a495-4ccb-9940-b81c94743051",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "./config/layout.js"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        },
+        {
+            "@id": "#73bdd7f6-3ad7-420f-ac21-f7cf890d0cfe",
+            "@type": "pdcm:Object",
+            "dc:description": "",
+            "dc:rights": "",
+            "pcdm:hasFile": {
+                "@id": "././TODO.md"
+            },
+            "pcdm:memberOf": {
+                "@id": "#nan"
+            }
+        }
+    ]
+}
